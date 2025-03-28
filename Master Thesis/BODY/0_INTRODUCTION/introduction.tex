@@ -1,0 +1,13 @@
+% INTRODUCTION FILE
+\pagestyle{fancy}
+\chapter*{Introduction}
+\pagestyle{fancy}
+The exponential growth of unstructured data, such as text, images, and audio, has outpaced the capabilities of traditional relational databases, which are optimized for structured records and ACID compliance. While conventional databases excel at transactional consistency, they struggle with efficient retrieval and similarity search across high-dimensional data spaces. This challenge has led to the rise of \textbf{Vector Database Management Systems (VDBMS)}, which represent data as vector embeddings, enabling powerful search and retrieval mechanisms based on similarity rather than exact matching.  
+
+VDBMS leverage Approximate Nearest Neighbors (ANN) search to efficiently query large-scale datasets, balancing speed and accuracy. Unlike traditional indexing methods, vector databases employ structures such as \textbf{Hierarchical Navigable Small World (HNSW) graphs} and \textbf{Inverted File Index (IVF)} to optimize search performance. Additionally, quantization techniques reduce memory and storage footprints while preserving retrieval quality.  
+
+Beyond retrieval, the application of VDBMS extends to \textbf{Multi-Modal search}, where different data types—such as images, text, and audio—are mapped into a unified vector space for seamless cross-modal querying. Furthermore, the integration of VDBMS with \textbf{Retrieval-Augmented Generation (RAG)} has gained traction, enhancing Large Language Model (LLM) responses by retrieving relevant context from vectorized data sources.  
+
+This thesis explores the architecture, indexing techniques, and retrieval strategies of modern VDBMS. It evaluates leading implementations such as Weaviate, FAISS, and Milvus, comparing their performance in large-scale search applications. Additionally, we investigate the role of vector databases in \textbf{LLM-driven retrieval systems}, examining strategies to mitigate issues such as context poisoning and improve retrieval precision through knowledge graphs and optimized prompting techniques.  
+
+By analyzing the capabilities and limitations of VDBMS, this work aims to provide a comprehensive understanding of their impact on AI-driven search and retrieval, highlighting their role as a foundational technology in modern information systems.  

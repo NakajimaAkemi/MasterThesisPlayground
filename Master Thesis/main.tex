@@ -1,0 +1,293 @@
+ 
+% SET DOCUMENT CLASS, PAGE SETTINGS, FONT...
+\documentclass[12pt,a4paper,twoside,openright,justified]{book}
+
+% SET FONT TYPE
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% OTHER FONTS....
+%\usepackage{tgpagella}
+%\usepackage{mathpazo}
+
+% LOAD PACKAGES...
+\input{packages.tex}
+
+% SET MAXIMUM DEPTH OF TOC AND SECTIONS
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% START THE DOCUMENT
+\begin{document}
+
+% INSERT FRONTPAGE
+\pagestyle{empty}
+\input{frontpage.tex}
+
+
+% START QUOTE PAGE
+\cleardoublepage
+{
+\vspace*{0.2\textheight}
+\large
+\noindent\hfill\enquote{\itshape 
+No.
+{}}
+\bigbreak
+}
+\large
+\hfill Hamlet, Act III, Scene III, Line 87
+\normalsize
+% END QUOTE PAGE
+
+
+% SET TEXT STYLE TO JUSTIFIED
+\justifying
+
+% SET SPACE BETWEEN TEXT AND FOOTNOTES
+\setlength{\skip\footins}{8mm}
+
+% SET PARAGRAPH INDENT
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2mm}
+
+
+% -------------------
+
+% ABSTRACT ENG
+\input{abstract-eng}
+
+% SELECT MAIN LANGUAGE (eng or ita), AFTER ENGLISH ABSTRACT AND GRAPHICAL ABSTRACT
+\selectlanguage{english}
+%\selectlanguage{italian}
+
+
+% START FRONTMATTER (Table Of Contents, List Of Tables, List Of Figures) - ROMAN NUMERALS
+\frontmatter
+\begin{spacing}{1.3}
+\pagestyle{toclof}
+\tableofcontents  % INSERT TABLE OF CONTENTS
+\clearpage
+%\listoffigures % INSERT LIST OF FIGURES
+%\clearpage
+%\listoftables % INSERT LIST OF TABLES
+%\clearpage
+\end{spacing}
+
+
+% --------------------------
+% START THESIS (Arabic numerals)
+\mainmatter
+
+% INTRODUCTION
+\input{BODY/0_INTRODUCTION/introduction}
+
+% CHAPTER 1
+\input{BODY/1_2_CHAP/chap_1}
+
+% CHAPTER 3
+\input{BODY/3_4_CHAP/Indexes}
+
+% CHAPTER 5
+\input{BODY/5_CHAP/Query_processor}
+
+% CHAPTER 6
+\input{BODY/6_CHAP/RAG}
+
+% CHAPTER 7
+%\input{BODY/7_CHAP/GRAPH_RAG}
+
+
+% CONCLUSIONS
+%\input{BODY/CONCLUSIONS/conclusions.tex}
+
+% APPENDIX
+%\input{BODY/APPENDIX A/appendix-A}
+
+\begin{thebibliography}{99}
+\section*{References for Chapter 1}
+\bibitem{deeplearning_vector_databases} DeepLearning.AI, \textit{Vector Databases and Embeddings Applications}, 2024. Available: \url{https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/}.
+
+\bibitem{deeplearning_retrieval_optimization} DeepLearning.AI, \textit{Retrieval Optimization: From Tokenization to Vector Quantization}, 2024. Available: \url{https://www.deeplearning.ai/short-courses/retrieval-optimization-from-tokenization-to-vector-quantization/}.
+
+\bibitem{elastic_vector_embedding} Elastic, \textit{What is Vector Embedding?}, 2024. Available: \url{https://www.elastic.co/what-is/vector-embedding}.
+
+\bibitem{pinecone_dense_vector_embeddings} Pinecone, \textit{Dense Vector Embeddings in NLP}, 2024. Available: \url{https://www.pinecone.io/learn/series/nlp/dense-vector-embeddings-nlp/}.
+
+\bibitem{linkedin_encoding_vs_embedding} LinkedIn, \textit{Understanding Differences Between Encoding and Embedding}, 2024. Available: \url{https://www.linkedin.com/pulse/understanding-differences-between-encoding-embedding-mba-ms-phd/}.
+
+\bibitem{levelup_vector_databases} LevelUp, \textit{6 Resources to Master Vector Databases and Building a Vector Storage}, 2024. Available: \url{https://levelup.gitconnected.com/6-resources-to-master-vector-databases-building-a-vector-storage-8d94ca1e3897}.
+
+\bibitem{medium_vector_search} Tech Padawan Chronicles, \textit{Vector Search: Unlocking the Power of Unstructured Data}, 2024. Available: \url{https://medium.com/tech-padawan-chronicles/vector-search-unlocking-the-power-of-unstructured-data-ecf7c8ce91f6}.
+
+\bibitem{ubiai_unstructured_data} UBIAI NLP, \textit{What is Unstructured Data? What Issues Can It Bring to Deep Learning Models in 2024?}, 2024. Available: \url{https://medium.com/ubiai-nlp/what-is-unstructured-data-what-issues-can-bring-to-the-deep-learning-model-in-2024-3410327dcc76}.
+
+
+\section*{References for Chapter 2}
+
+
+\bibitem{myscale_vector_indexing} MyScale, \textit{Understanding Vector Indexing: A Comprehensive Guide}, 2024. Available: \url{https://medium.com/@myscale/understanding-vector-indexing-a-comprehensive-guide-d1abe36ccd3c}.
+
+\bibitem{freedium_neural_networks} Freedium, \textit{Overview of a Neural Network's Learning Process}, 2024. Available: \url{https://freedium.cfd/https://medium.com/data-science-365/overview-of-a-neural-networks-learning-process-61690a502fa}.
+
+\bibitem{deeplearning_vector_databases} DeepLearning.AI, \textit{Vector Databases and Embeddings Applications}, 2024. Available: \url{https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/}.
+
+\bibitem{anishnama_encoder_decoder} Anish Nama, \textit{Exploring the Power of Encoder-Decoder Models: Pros, Cons, and Applications}, 2024. Available: \url{https://medium.com/@anishnama20/exploring-the-power-of-encoder-decoder-models-pros-cons-and-applications-8bfbe2e66e76}.
+
+\bibitem{analyticsvidhya_neural_networks} Analytics Vidhya, \textit{Neural Networks in a Nutshell}, 2024. Available: \url{https://medium.com/analytics-vidhya/neural-networks-in-a-nutshell-bb013f40197d}.
+
+\bibitem{builtin_transformer_nn} BuiltIn, \textit{Transformer Neural Network}, 2024. Available: \url{https://builtin.com/artificial-intelligence/transformer-neural-network}.
+
+\bibitem{datacamp_vector_databases} DataCamp, \textit{The Top 5 Vector Databases}, 2024. Available: \url{https://www.datacamp.com/blog/the-top-5-vector-databases}.
+
+\bibitem{schroff_facenet} Florian Schroff, Dmitry Kalenichenko, and James Philbin, \textit{FaceNet: A Unified Embedding for Face Recognition and Clustering}, in Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2015. Available: \url{https://arxiv.org/abs/1503.03832}.
+
+\bibitem{johnson_faiss} Jeff Johnson, Matthijs Douze, and Hervé Jégou, \textit{Billion-scale similarity search with GPUs}, arXiv preprint arXiv:1702.08734, 2017. Available: \url{https://arxiv.org/abs/1702.08734}.
+
+\bibitem{mikolov_word2vec} Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S. Corrado, and Jeffrey Dean, \textit{Efficient Estimation of Word Representations in Vector Space}, arXiv preprint arXiv:1301.3781, 2013. Available: \url{https://arxiv.org/abs/1301.3781}.
+
+    \bibitem{dlai} DeepLearning.ai, "Building Multimodal Search and RAG", \url{https://www.deeplearning.ai/short-courses/building-multimodal-search-and-rag/}.
+    \bibitem{kxsystems} KX Systems, "Guide to Multimodal RAG for Images and Text", \url{https://medium.com/kx-systems/guide-to-multimodal-rag-for-images-and-text-10dab36e3117}.
+    \bibitem{openai} OpenAI Cookbook, "Custom Image Embedding Search", \url{https://cookbook.openai.com/examples/custom_image_embedding_search}.
+    \bibitem{langchain} Langchain Blog, "Semi-Structured Multi-Modal RAG", \url{https://blog.langchain.dev/semi-structured-multi-modal-rag/}.
+    \bibitem{kinomoto} Kinomoto, "Convert Images to Embeddings for RAG", \url{https://medium.com/kinomoto-mag/convert-images-to-embeddings-for-rag-40447d16aaf2}.
+    \bibitem{dataandbeyond} Data and Beyond, "Vector Databases: A Beginner's Guide", \url{https://medium.com/data-and-beyond/vector-databases-a-beginners-guide-b050cbbe9ca0}.
+    \bibitem{arxiv} arXiv, "Understanding Multimodal Retrieval from an Embedding Perspective", \url{https://arxiv.org/abs/2310.14021}.
+
+
+
+
+\section*{References for Chapter 3}
+
+\bibitem{pinecone_pq} 
+Pinecone. "Product Quantization."  
+\url{https://www.pinecone.io/learn/series/faiss/product-quantization/}.
+
+\bibitem{towards_datascience_pq} 
+Towards Data Science. "Similarity Search & Product Quantization."  
+\url{https://towardsdatascience.com/similarity-search-product-quantization-b2a1a6397701}.
+
+\bibitem{deeplearning_ai_pq} 
+DeepLearning.AI. "Retrieval Optimization: From Tokenization to Vector Quantization."  
+\url{https://learn.deeplearning.ai/courses/retrieval-optimization-from-tokenization-to-vector-quantization/lesson/1/introduction}.
+
+\bibitem{weaviate_pq} 
+Weaviate. "Product Quantization in Vector Databases."  
+\url{https://weaviate.io/developers/weaviate/concepts/vector-quantization#product-quantization}.
+
+\bibitem{qdrant_pq} 
+Qdrant. "Understanding Product Quantization."  
+\url{https://qdrant.tech/articles/product-quantization/}.
+
+\bibitem{weaviate_ann} 
+Weaviate. "ANN Algorithms: Tiles Encoder."  
+\url{https://weaviate.io/blog/ann-algorithms-tiles-enocoder}.
+
+\bibitem{wikipedia_quantile} 
+Wikipedia. "Quantile."  
+\url{https://en.wikipedia.org/wiki/Quantile}.
+
+\bibitem{wikipedia_cdf} 
+Wikipedia. "Cumulative Distribution Function."  
+\url{https://en.wikipedia.org/wiki/Cumulative_distribution_function}.
+
+\bibitem{timescale_hnsw_vs_diskann} 
+Timescale. "HNSW vs. DiskANN: A Comparison."  
+\url{https://www.timescale.com/learn/hnsw-vs-diskann}.
+
+\bibitem{milvus_diskann} 
+Milvus. "DiskANN: An Efficient ANN Index."  
+\url{https://milvus.io/blog/2021-09-24-diskann.md}.
+
+
+\section*{References for Chapter 4}
+\bibitem{vecindexing_myscale} 
+Myscale Team. "Understanding Vector Indexing: A Comprehensive Guide." Medium, 2023. \url{https://medium.com/@myscale/understanding-vector-indexing-a-comprehensive-guide-d1abe36ccd3c}
+
+\bibitem{oracle_hnsw} 
+Oracle. "Understanding Hierarchical Navigable Small World Indexes." Oracle Database 23c Documentation. \url{https://docs.oracle.com/en/database/oracle/oracle-database/23/vecse/understand-hierarchical-navigable-small-world-indexes.html}
+
+\bibitem{weaviate_flat} 
+Weaviate. "Flat Vector Index." \url{https://weaviate.io/developers/academy/py/vector_index/flat}
+
+\bibitem{pinecone_faiss} 
+Pinecone. "Vector Indexes." \url{https://www.pinecone.io/learn/series/faiss/vector-indexes/}
+
+\bibitem{mehta_vector_dbs} 
+G. Mehta. "Understanding Vector DBs Indexing Algorithms." Medium, 2023. \url{https://gagan-mehta.medium.com/understanding-vector-dbs-indexing-algorithms-ce187dca69c2}
+
+\bibitem{kdb_indexing} 
+KDB.ai. "Indexing Basics." \url{https://kdb.ai/learning-hub/articles/indexing-basics/}
+
+\bibitem{pinecone_lsh} 
+Pinecone. "Locality-Sensitive Hashing (LSH)." \url{https://www.pinecone.io/learn/series/faiss/locality-sensitive-hashing/}
+
+\bibitem{lsh_random_proj} 
+Pinecone. "Locality-Sensitive Hashing Using Random Projection." \url{https://www.pinecone.io/learn/series/faiss/locality-sensitive-hashing-random-project}
+
+\bibitem{lsh_querying} 
+D. Turnbull. "Implementing Random Projections." SoftwareDoug, 2023. \url{https://softwaredoug.com/blog/2023/08/21/implementing-random-projections}
+
+\bibitem{ivf_index} 
+S. Jain. "Similarity Search: kNN & Inverted File Index." Towards Data Science, 2023. \url{https://towardsdatascience.com/similarity-search-knn-inverted-file-index-7cab80cc0e79}
+
+\bibitem{faiss_vs_lsh} 
+Facebook Research. "Comparison with LSH." FAISS Wiki. \url{https://github.com/facebookresearch/faiss/wiki/Comparison-with-LSH}
+
+\bibitem{pinecone_hnsw} 
+Pinecone. "Hierarchical Navigable Small Worlds (HNSW)." \url{https://www.pinecone.io/learn/series/faiss/hnsw/}
+
+\bibitem{hnsw_tds} 
+Y. Barash. "Similarity Search Part 4: Hierarchical Navigable Small World (HNSW)." Towards Data Science, 2023. \url{https://towardsdatascience.com/similarity-search-part-4-hierarchical-navigable-small-world-hnsw-2aad4fe87d37}
+
+\bibitem{datastax_hnsw} 
+DataStax. "Hierarchical Navigable Small Worlds (HNSW) Guide." \url{https://www.datastax.com/guides/hierarchical-navigable-small-worlds}
+
+\bibitem{deeplearning_nsw} 
+DeepLearning.AI. "NSW Graph Overview." \url{https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/}
+
+\bibitem{faiss_hnsw} 
+M. Aumüller, E. Bernhardsson, A. Faithfull. "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms." arXiv preprint, 2017. \url{https://arxiv.org/abs/1708.0979}
+
+\bibitem{malkov_hnsw} 
+Y. Malkov, D. Yashunin. "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs." IEEE TPAMI, 2020. \url{https://arxiv.org/abs/1603.09320}
+
+\bibitem{subramanya_diskann} 
+A. Subramanya, M. Shrivastava, P. Pande, et al. "DiskANN: Fast Accurate Billion-Point Nearest Neighbor Search on a Single Node." Advances in Neural Information Processing Systems (NeurIPS), 2019. \url{https://arxiv.org/abs/1907.03688}
+
+\bibitem{vamana} 
+A. Jayaram Subramanya, P. Pande, A. Shrivastava. "Vamana: Scalable Nearest Neighbor Graph Construction for High-Dimensional Data." International Conference on Machine Learning (ICML), 2019. \url{https://arxiv.org/abs/1906.12142}
+\bibitem{weaviate_rag}
+Weaviate. "Generative RAG Starter Guide." 
+Available at: \url{https://weaviate.io/developers/weaviate/starter-guides/generative}.
+\section*{References for Chapter 5}
+\bibitem{arxiv_rag}
+"Latest Research on RAG." 
+Available at: \url{https://arxiv.org/pdf/2404.16130}.
+
+\bibitem{langchain}
+LangChain. "Introduction to LangChain." 
+Available at: \url{https://python.langchain.com/docs/introduction/}.
+
+\bibitem{langgraph}
+LangGraph. "Introduction to LangGraph." 
+Available at: \url{https://langchain-ai.github.io/langgraph/tutorials/introduction/}.
+
+\bibitem{agentic_rag}
+Weaviate. "What is Agentic RAG?" 
+Available at: \url{https://weaviate.io/blog/what-is-agentic-rag}.
+
+\bibitem{neo4j_rag}
+Neo4j. "Knowledge Graph vs Vector RAG." 
+Available at: \url{https://neo4j.com/blog/developer/knowledge-graph-vs-vector-rag/}.
+\end{thebibliography}
+
+
+
+
+
+% ACKNOWLEDGMENT
+\input{acknowledgment.tex}
+
+
+% END DOCUMENT
+\end{document}

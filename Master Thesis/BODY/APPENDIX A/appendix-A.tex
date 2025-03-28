@@ -1,0 +1,21 @@
+
+% SETTING FOR APPENDIX ENVIRONMENT
+{
+\cleardoublepage
+\let\clearpage\relax
+\begin{LARGE}
+\textbf{Appendix}
+\end{LARGE}\\
+\noappendicestocpagenum
+\renewcommand{\appendixtocname}{Appendix}
+\renewcommand{\appendixpagename}{Appendix}
+\appendix
+\addappheadtotoc
+\chapter{Appendix title}
+\label{appendix:first-appendix}
+\normalsize
+}
+\lipsum[1-5]
+% START APPENDIX
+\section{First appendix section}
+\lipsum[1-20]

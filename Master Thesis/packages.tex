@@ -1,0 +1,172 @@
+\usepackage{comment}
+\usepackage{appendix}
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\usepackage[english,italian]{babel}
+
+\usepackage{csquotes}
+
+\usepackage{hyphenat}
+
+\usepackage{bookabstract}
+
+% SET PAGE MARGINS
+\usepackage[top=30mm, bottom=30mm, inner=20mm, outer=20mm, headsep=10mm, footskip=12mm]{geometry}
+
+\usepackage{setspace}
+\setstretch{1.4}
+
+
+\usepackage{lipsum}
+
+\addtolength{\headheight}{3pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}% <- must be used before the redefinition of \chaptermark and \sectionmark
+% change the marks set by \chapter and \section
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+% change fancy style
+\fancyhf{}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt}
+
+% change plain style (eg. used on chapter pages)
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt} % comment this line, if there should be a headsepline on plain pages too
+}
+
+% PAGESTYLE IN TOC, LOT, LOF
+\fancypagestyle{toclof}{%
+  \fancyhf{}%
+  \fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.2pt}
+  \fancyfoot[LE,RO]{\thepage}
+}
+
+% PAGES BETWEEN CHAPTER ARE CLEARED (WHEN LEFTSIDE)
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}%
+\thispagestyle{empty}%
+\newpage%
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+
+% BIBLIOGRAPHY STYLE 
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=none,
+  ]{biblatex}
+\addbibresource{bibliography.bib}
+
+% MANAGE LONG BIBLIOGRAPHY URL
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+
+
+% SET CHAPTER APPEARENCE (ADD NUMBER NEXT TO THE CHAPTER, MARGIN...)
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter{. }}{0pt}{\LARGE\bfseries}
+\titlespacing*{\chapter}{0pt}{0pt}{15pt} 
+\titlespacing*{\section}{0pt}{5pt}{10pt} 
+\titlespacing*{\subsection}{0pt}{0pt}{5pt} 
+\usepackage{graphicx}
+
+% --- Mathematics ---
+\usepackage{bm}         % Bold text in math mode
+\usepackage{amsmath}
+\usepackage{mathtools}
+% SET SPACE ABOVE AND BELOW EQUATION ENVIRONMENT
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{8mm}
+  \setlength\belowdisplayskip{8mm}
+  \setlength\abovedisplayshortskip{6mm}
+  \setlength\belowdisplayshortskip{6mm}
+}
+\makeatother
+% Math formulas and improved typographical quality of their output
+\usepackage{amssymb}    % Extended symbol collection
+\usepackage{amsthm}     % Helps define theorem-like structures
+\usepackage{textcomp}   % Used in the package "gensymb" (below), which will give warnings if "textcomp" is not imported in advance
+\usepackage{gensymb}    % Adds extra generic symbols for math and text mode, e.g. \degree
+
+\usepackage{siunitx}
+\sisetup{exponent-product=\ensuremath{{}\cdot{}}}
+
+% --- Images caption ---
+\usepackage[font=small, labelfont=bf, margin=0.3cm]{caption}        % Enables controlling the look and feel of captions, see package documentation
+%\usepackage{subcaption}     % Recommended when making sub-figures
+\usepackage[notlof, notlot, nottoc]{tocbibind}  % Includes Bibliography, Index, list of Listing etc. to table of contents
+\newcommand{\source}[1]{\vspace{-4pt} \caption*{\hfill \footnotesize{Source: {#1}} } }   % Easily insert sources in images
+
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\usepackage{chemformula} % chem formula
+\usepackage{chemfig} % chemical fig
+
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.25} % TABLE LINE SPACING
+
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{tabularray}
+\usepackage{array}
+\usepackage[document]{ragged2e}
+\usepackage{changepage} 
+\usepackage{seqsplit}
+
+\usepackage[version=4]{mhchem}
+
+\usepackage{adjustbox}
+
+\usepackage{subfigure}
+\usepackage[subfigure]{tocloft}
+\renewcommand{\cftfigpresnum}{\figurename~}
+\addtolength{\cftfignumwidth}{13mm}
+\renewcommand{\cfttabpresnum}{\tablename~}
+\addtolength{\cfttabnumwidth}{13mm}
+\setlength{\cftbeforetoctitleskip}{1cm}
+\setlength\cftbeforeloftitleskip{1cm}
+\setlength\cftbeforelottitleskip{1cm}
+
+\usepackage{lscape}
+
+\usepackage{colortbl}
+
+\usepackage[pdfpagelabels=true]{hyperref}
+\hypersetup{
+pdftitle={Thesis title},
+pdfsubject={Master's degree course},
+pdfauthor={Author name},
+pdfkeywords={keyword1, keyword2, keyword3}
+}
+
+\usepackage{xcolor}
+\definecolor{blulink}{HTML}{0F4ACD}
+\definecolor{redcite}{HTML}{E34D51}
+\hypersetup{
+    colorlinks,
+    linkcolor={black}, % CHANGE COLOR IF NEEDED
+    citecolor={black}, % CHANGE COLOR IF NEEDED
+    urlcolor={black}  % CHANGE COLOR IF NEEDED
+}
+
+\usepackage[parfill]{parskip}
+\setlength\parskip{.5\baselineskip plus .1\baselineskip minus .1\baselineskip}
