@@ -1,4 +1,5 @@
 This repo contains my Master Thesis of Informatic Engineering with specialization in Data Science @UNIMORE.
+
 This repo also contains all the works related to my internship which my thesis is based upon.
 
 Main topics:
