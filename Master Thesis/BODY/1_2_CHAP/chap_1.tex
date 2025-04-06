@@ -9,7 +9,8 @@ In the context of data management, data can be classified as structured or unstr
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{IMAGES/immagine_2025-02-24_091828425.png}
-    \caption{Structured vs. Unstructured data. Source: DeepLearning.AI.\footnotemark.}
+    \label{fig:Structured vs. Unstructured data}
+    \caption[Structured vs. Unstructured data.]{Structured vs. Unstructured data. Source: DeepLearning.AI. \footnotemark.}
     \label{fig:structuredVunstruct}
 \end{figure}
 \footnotetext{\url{https://www.deeplearning.ai/short-courses/building-multimodal-search-and-rag/}}
@@ -22,7 +23,7 @@ A vector embedding is a numerical representation of data (such as images, docume
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{IMAGES/encode.JPG}
-    \caption{Encoding process. Source: DeepLearning.AI.\footnotemark.}
+    \caption[Encoding process.]{Encoding process. Source: DeepLearning.AI.\footnotemark.}
     \label{fig:Encoding}
 \end{figure}
 
@@ -65,7 +66,7 @@ Vector databases share several core components that enable efficient storage, re
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-24_100130378.png}
-    \caption{Architecture. Source: Medium.\footnotemark.}
+    \caption[VDB Architecture.]{Architecture. Source: Medium.\footnotemark.}
     \label{fig:Architecture}
 \end{figure}
 \footnotetext{\url{https://medium.com/data-and-beyond/vector-databases-a-beginners-guide-b050cbbe9ca0}}
@@ -208,7 +209,7 @@ The “Neuron” is the most basic computational unit of the Neural Network, eac
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_153339240.png}
-    \caption{Neuron Source.\footnotemark.}
+    \caption[Neuron]{Neuron Source.\footnotemark.}
     \label{fig:Neuron}
 \end{figure}
 \footnotetext{\url{https://medium.com/analytics-vidhya/neural-networks-in-a-nutshell-bb013f40197d}}
@@ -238,7 +239,7 @@ One of the architectures used to create vector embeddings leveraging neural netw
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_154609390.png}
-    \caption{Autoencoder Source.\footnotemark.}
+    \caption[AutoEncoder]{Autoencoder Source.\footnotemark.}
     \label{fig:Autoencoder}
 \end{figure}
 \footnotetext{\url{https://www.deeplearning.ai/short-courses/building-multimodal-search-and-rag/}}
@@ -248,7 +249,7 @@ As an example, we use the MNIST dataset, which consists of images of handwritten
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_154914801.png}
-    \caption{example of AutoEncoder dimensions:
+    \caption[Example of AutoEncoder]{example of AutoEncoder dimensions:
  Source.\footnotemark[3]}
     \label{fig:2D}
 \end{figure}
@@ -259,7 +260,7 @@ For simplicity and clarity, the images are represented as 2-dimensional vectors,
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_155006209.png}
-    \caption{MNIST mapped in 2D:
+    \caption[MNIST 2D]{MNIST mapped in 2D:
  Source.\footnotemark[3]}
     \label{fig:2D}
 \end{figure}
@@ -269,7 +270,7 @@ As expected, some information is lost during the compression process, as the inp
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_155109338.png}
-    \caption{Before and After encoding:
+    \caption[MNIST Results]{Before and After encoding:
  Source.\footnotemark[3]}
     \label{fig:2D}
 \end{figure}
@@ -346,7 +347,7 @@ GPT uses \textbf{causal self-attention}, ensuring tokens only attend to past inp
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{IMAGES/immagine_2025-02-26_110808787.png}
-    \caption{GPT model example. Source: DeepLearning.AI.\footnotemark.}
+    \caption[GPT]{GPT model example. Source: DeepLearning.AI.\footnotemark.}
     \label{fig:GPT model}
 \end{figure}
 \footnotetext{\url{https://www.deeplearning.ai/short-courses/building-multimodal-search-and-rag/}}
@@ -357,7 +358,7 @@ Visual Transformers extend the principles of self-attention, initially designed 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{IMAGES/immagine_2025-02-26_112843716.png}
-    \caption{Image patching. Source: DeepLearning.AI.\footnotemark[4]}
+    \caption[Image Patching]{Image patching. Source: DeepLearning.AI.\footnotemark[4]}
     \label{fig: Patching }
 \end{figure}
 
@@ -373,7 +374,7 @@ Key steps in ViT include:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{IMAGES/immagine_2025-02-26_112630864.png}
-    \caption{Vision Transformer process. Source: DeepLearning.AI.\footnotemark[4]}
+    \caption[Vision Transformer]{Vision Transformer process. Source: DeepLearning.AI.\footnotemark[4]}
     \label{fig:Vi Transformer }
 \end{figure}
 \footnotetext[4]{\url{https://www.deeplearning.ai/short-courses/building-multimodal-search-and-rag/}}
@@ -386,7 +387,7 @@ Large Language Models can be trained to process visual and language input, the p
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-26_113532424.png}
-    \caption{Text and Image input processed. Source: DeepLearning.AI.\footnotemark[4]}
+    \caption[Text and Image input processed]{Text and Image input processed. Source: DeepLearning.AI.\footnotemark[4]}
     \label{fig:InputText}
 \end{figure}
 The resulting model can handle tasks that require both visual understanding and language generation, such as identifying objects in an image or answering questions about visual content.
@@ -420,7 +421,7 @@ The contrastive learning process follows these steps:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.55\textwidth]{IMAGES/contrastive_CLIP.png}
-    \caption{Illustration of Contrastive Learning. Source:v7labs\footnotemark.}
+    \caption[Illustration of Contrastive Learning]{Illustration of Contrastive Learning. Source:v7labs\footnotemark.}
     \label{fig:contrastive_learning}
 \end{figure}
 \footnotetext{\url{https://www.v7labs.com/blog/contrastive-learning-guide}}
@@ -430,9 +431,7 @@ The contrastive loss function is formulated as follows:
 \begin{equation}
 \mathcal{L} = -\log \frac{\exp(\text{sim}(q, k^+))}{\sum_{k \in K} \exp(\text{sim}(q, k))}
 \end{equation}
-
 where:
-
 \begin{itemize}
     \item \( q \) is the embedding of an anchor (e.g., an image encoded by a function \( f \)).
     \item \( k^+ \) is the embedding of a positive example (e.g., a corresponding text encoded by function \( g \)).

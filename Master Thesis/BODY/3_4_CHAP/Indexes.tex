@@ -7,8 +7,8 @@ This chapter explores \textbf{vector quantization} techniques, which arise from 
 \textbf{Product Quantization (PQ)} reduces memory usage by restricting vector representation, making storage and retrieval more efficient. The process begins by dividing the original vector into several smaller sub-vectors of equal size, and the greater the number of sub-vectors, the lower the compression rate, as more data points need to be stored. Each sub-vector represents a separate subspace, where we apply a clustering algorithm associated with its closest centroid.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{IMAGES/immagine_2025-02-27_122846884.png}
-    \caption{Product Quantization. Source: DeepLearning.AI.\footnotemark[1]}
+    \includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-02-27_122846884.png}
+    \caption[Product Quantization.]{Product Quantization. Source: DeepLearning.AI.\footnotemark[1]}
     \label{fig:PQ}
 \end{figure}
 \footnotetext[1]{\url{https://learn.deeplearning.ai/courses/retrieval-optimization-from-tokenization-to-vector-quantization/lesson/1/introduction}}
@@ -29,8 +29,8 @@ Formally, the \textbf{product quantization} process goes as follows:
 As for generating centroids, VDBMSs like Weaviate and Qdrant rely on the widely used encoder algorithm \textbf{K-means}. It defines a \textbf{K} parameter, which is the number of partitions (also referred to as tiles) we want for our subvector space. The algorithm starts by assigning \textbf{K} random centroids within the dataset, then iteratively assigns the closest vectors to them, recalculating the cluster using the mean of the residing vectors. The algorithm stops when the centroids have stabilized or a maximum number of iterations have been reached.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-27_123033735.png}
-    \caption{Partitioned Vector Space. Source: DeepLearning.AI.\footnotemark[1]}
+\includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-02-27_123033735.png}
+    \caption[Partitioned Vector Space.]{Partitioned Vector Space. Source: DeepLearning.AI.\footnotemark[1]}
     \label{fig:PQ}
 \end{figure}
 Another algorithm used to partition the subvector space is the \textbf{Tile encoder}. This algorithm aims to resolve one of the main limitations of K-means, which is the tendency for centroids to become outdated over time as new vectors join the collection. This results in some centroids becoming more populated than others. 
@@ -42,8 +42,8 @@ The Tile encoder addresses this issue by employing the Cumulative Density Functi
 \textbf{Scalar Quantization} reduces the precision of numerical values by mapping continuous floating-point numbers to a fixed set of discrete levels. Typically, this involves converting each dimension from a 32-bit floating-point representation to an 8-bit integer. The process begins by analyzing the data to determine the range, setting boundaries based on the minimum and maximum values from a training set. The range is then divided into a fixed number of intervals (e.g., 256 for 8-bit quantization), with each value assigned to the nearest bucket. The resulting integer represents the corresponding bucket, enabling a more compact and efficient representation while preserving as much information as possible within the given bit constraint.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{IMAGES/immagine_2025-02-27_123316646.png}
-    \caption{Scalar Quantization. Source: DeepLearning.AI.\footnotemark[1]}
+    \includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-02-27_123316646.png}
+    \caption[Scalar Quantization.]{Scalar Quantization. Source: DeepLearning.AI.\footnotemark[1]}
     \label{fig:SQ}
 \end{figure}
 
@@ -51,8 +51,8 @@ The Tile encoder addresses this issue by employing the Cumulative Density Functi
 \textbf{Binary Quantization} consists of converting a floating point to a binary representation, taking the quantization to the extreme by transitioning from a 32-bit representation to a single bit. By sacrificing a huge amount of information and distance calculation accuracy, \textbf{Binary Quantization} excels by having a minor memory and disk footprint. This technique is very susceptible to \textbf{oversampling}(vectors with the same compressed representation), while being the fastest.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.5\textwidth]{IMAGES/immagine_2025-02-27_123438887.png}
-    \caption{Binary Quantization. Source: DeepLearning.AI.\footnotemark[1]}
+\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-02-27_123438887.png}
+    \caption[Binary Quantization.]{Binary Quantization. Source: DeepLearning.AI.\footnotemark[1]}
     \label{fig:BQ}
 \end{figure}
 
@@ -61,8 +61,8 @@ To mitigate the limitations of vector quantization, vector database management s
 To address this, databases like Weaviate use \textbf{overfetching}, retrieving a larger set of candidates instead of selecting only the top-$K$ results from the quantized index. This ensures that relevant matches are not overlooked. Once these compressed vectors are retrieved, \textbf{rescoring} is performed by fetching the original, high-precision vectors from disk. The query is then re-evaluated against this smaller subset, improving accuracy while maintaining search efficiency.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.5\textwidth]{IMAGES/immagine_2025-02-27_123548078.png}
-    \caption{Example of vectors with the same quantized representation. Source: DeepLearning.AI.\footnotemark.}
+\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-02-27_123548078.png}
+    \caption[Quantized representation collision]{Example of vectors with the same quantized representation. Source: DeepLearning.AI.\footnotemark.}
     \label{fig:Overfetching}
 \end{figure}
 \footnotetext{\url{https://learn.deeplearning.ai/courses/retrieval-optimization-from-tokenization-to-vector-quantization/lesson/1/introduction}}
@@ -106,7 +106,7 @@ The Locality-Sensitive Hashing (LSH) indexing technique maps high-dimensional ve
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.35\textwidth]{IMAGES/immagine_2025-02-27_130242965.png}
-    \caption{Example of Hyperplane. Source: Sofrwaredoug.\footnotemark.}
+    \caption[Hyperplane]{Example of Hyperplane. Source: Sofrwaredoug.\footnotemark.}
     \label{fig:Random Projection}
 \end{figure}
 \footnotetext{\url{https://softwaredoug.com/blog/2023/08/21/implementing-random-projections}}
@@ -142,7 +142,7 @@ A predefined number of centroids is established before clustering, creating an i
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.55\textwidth]{IMAGES/immagine_2025-02-27_130909576.png}
-    \caption{Example of Voronoi cells. Source: Towardsdatascience.\footnotemark[2]}
+    \caption[Voronoi Cells]{Example of Voronoi cells. Source: Towardsdatascience.\footnotemark[2]}
     \label{fig:Voronoi}
 \end{figure}
 \footnotetext[2]{\url{https://towardsdatascience.com/similarity-search-knn-inverted-file-index-7cab80cc0e79}}
@@ -151,7 +151,7 @@ Queries locate the nearest centroids and search for the closest vectors within t
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.55\textwidth]{IMAGES/immagine_2025-02-27_131611893.png}
-    \caption{Edge problem. Source: Towardsdatascience.\footnotemark[2]}
+    \caption[Edge problem]{Edge problem. Source: Towardsdatascience.\footnotemark[2]}
     \label{fig:VoronoiEdges}
 \end{figure}
 \subsection{IVF Variants}
@@ -167,7 +167,7 @@ Unlike some other indexes, the construction of the index is not a deterministic 
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.55\textwidth]{IMAGES/immagine_2025-02-27_132644429.png}
-    \caption{Example of NSW construction with M=2. Source: Towardsdatascience.\footnotemark.}
+    \caption[NSW construction]{Example of NSW construction with M=2. Source: Towardsdatascience.\footnotemark.}
     \label{fig:NSW}
 \end{figure}
 \footnotetext{\url{https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/ }}
@@ -179,7 +179,7 @@ To mitigate the risk of getting stuck in dead regions, various strategies can be
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-02-27_132919654.png}
-    \caption{example of NSW routing where A is entry point. Source: DeepLearningAI.\footnotemark.}
+    \caption[NSW routing]{example of NSW routing where A is entry point. Source: DeepLearningAI.\footnotemark.}
     \label{fig:NSW traversal}
 \end{figure}
 \footnotetext{\url{https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/ }}
@@ -189,7 +189,7 @@ The HNSW index is an evolution of the \textbf{Navigable Small World (NSW)} graph
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.8\textwidth]{IMAGES/immagine_2025-02-27_133448847.png}
-    \caption{Skip List. Source: Towardsdatascience.\footnotemark[2]}
+    \caption[Skip List]{Skip List. Source: Towardsdatascience.\footnotemark[2]}
     \label{fig:Skip List}
 \end{figure}
 
@@ -205,7 +205,7 @@ The \textbf{HNSW} index follows a similar layered structure, where:
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-02-27_133909960.png}
-    \caption{HNSW index. Source: Towardsdatascience.\footnotemark[2]}
+    \caption[HNSW]{HNSW index. Source: Towardsdatascience.\footnotemark[2]}
     \label{fig:HNSW}
 \end{figure}
 This multi-layered organization significantly improves retrieval efficiency by reducing the number of comparisons required for nearest neighbor search.  
@@ -234,7 +234,7 @@ The Figures below show the impact of different values of M,performed over the em
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-02-27_142057404.png}
-    \caption{QPS vs Recall between different values of M.}
+    \caption[Analysis of M parameter]{QPS vs Recall between different values of M.}
     \label{fig:M search}
 \end{figure}
 
@@ -300,7 +300,7 @@ This pruning-based method enables Vamana to optimize the trade-off between \text
 \begin{figure}[h]
     \centering
 \includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-02-27_134619701.png}
-    \caption{Vamana Graph example. Source: Planetscale.\footnotemark.}
+    \caption[Vamana]{Vamana Graph example. Source: Planetscale.\footnotemark.}
     \label{fig:Vamana}
 \end{figure}
 \footnotetext{\url{https://planetscale.com/docs/vectors/terminology-and-concepts
@@ -314,3 +314,4 @@ DiskANN provides some optimization in order to increase querying performance:
     \item \textbf{Clustered Indexing:} Partitions data into overlapping clusters using k-means clustering. Each data point belongs to multiple clusters, ensuring connectivity for search algorithms.
     \item \textbf{Beam Search:} Retrieves neighborhood data from SSD in small batches, reducing read latencies by grouping nearby data access requests.
 \end{itemize}
+\clearpage

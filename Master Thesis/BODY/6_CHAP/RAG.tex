@@ -1,7 +1,7 @@
 \pagestyle{fancy}
-\chapter{RAG and its Applications}  
+\chapter{RAG}  
 \label{chap:RAG}  
-This chapter explores Retrieval-Augmented Generation (RAG), which enhances Large Language Models (LLMs) by integrating retrieval from Vector Databases (VDBMSs) to mitigate their limitations. We discuss alternative RAG approaches, including Agentic RAG, which leverages AI agents for iterative reasoning and refinement. The chapter also introduces the core experiment of this thesis: implementing an Agentic RAG that utilizes a Knowledge Graph to represent relational table schemas, enabling graph traversal for SQL query generation with improved explainability.  
+This chapter explores Retrieval-Augmented Generation (RAG), which enhances Large Language Models (LLMs) by integrating retrieval from Vector Databases (VDBMSs) to mitigate their limitations. We discuss alternative RAG approaches, including Agentic RAG, which leverages AI agents for iterative reasoning and refinement.
 
 
 \section{Retrieval-Augmented Generation}  
@@ -128,10 +128,9 @@ As previously mentioned, Agentic RAG helps overcome the limitations of static RA
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{IMAGES/immagine_2025-03-22_165130054.png}
-    \caption{LangGraph Workflow for Document Retrieval.}
+    \caption[LangGraph Workflow]{LangGraph Workflow for Document Retrieval.}
 \end{figure}
 
-\footnotetext{\url{https://weaviate.io/blog/speed-up-filtered-vector-search}}
 
 LangGraph addresses this issue by introducing a structured, step-by-step retrieval process where each agent performs a distinct task. These tasks include:
 \begin{itemize}
@@ -143,12 +142,15 @@ LangGraph addresses this issue by introducing a structured, step-by-step retriev
 \end{itemize}
 This structured approach significantly enhances the RAG workflow by ensuring more accurate results while also standardizing the retrieval process.
 
+\chapter{GraphRAG}
+This chapter introduces the concept of Retrieval-Augmented Generation (RAG) in conjunction with Knowledge Graphs, which serve as structured data representations that capture complex relationships between entities. Knowledge Graphs are particularly advantageous due to their ability to synthesize information and reveal intricate connections between data points, making them an effective tool for enhancing retrieval-based AI models. We begin by exploring the applications of Graph RAG, demonstrating how it improves information retrieval by leveraging structured data. Following this, we delve into the core experiment of this thesis: the implementation of an Agentic RAG system that utilizes a Knowledge Graph to represent relational database schemas. This innovative approach enables efficient graph traversal for SQL query generation, enhancing both the explainability and accuracy of the generated queries.
+
 \section{Knowledge Graphs and GraphRAG}
 Another RAG approach that has been lately gaining traction employs the graph based data structures known as Knowledge Graphs. These structures are particularly useful for representing entities as nodes and the relationships between them with edges.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.5\textwidth]{IMAGES/Conceptual_Diagram_-_Example.svg.png}
-    \caption{Example of Knowledge Graph. Source: Wikipedia\footnotemark}
+\includegraphics[width=0.65\textwidth]{IMAGES/Conceptual_Diagram_-_Example.svg.png}
+    \caption[Knowledge Graph]{Example of Knowledge Graph. Source: Wikipedia\footnotemark}
     \label{fig:Knowledge Graph}
 \end{figure}
 \footnotetext{\url{https://en.wikipedia.org/wiki/Knowledge_graph}}
@@ -165,6 +167,56 @@ The primary distinction between GraphRAG and Vector RAG lies in their retrieval 
     \item 	\textbf{Sensemaking Ability:} GraphRAG excels at answering global questions that require synthesizing information across multiple documents, while Vector RAG is better suited for fact-based, localized retrieval.
     \item 	\textbf{Scalability and Efficiency:} While GraphRAG requires an initial indexing phase to construct the knowledge graph, it can efficiently retrieve high-quality summaries for complex queries without retrieving an excessive number of items.
 \end{itemize}
+
+
+\subsection{Examples of Graph RAG  applications with LangChain}
+
+With LangChain, we can provide a robust framework for integrating LLMs with our graph database by dynamically generating Cypher queries based on user questions. LangChain promotes seamless interaction between LLMs and graphs through the following components:
+
+\begin{itemize}
+    \item \textbf{Graph Database:} A structured representation of knowledge, such as Neo4j, where entities and relationships are stored.
+    \item \textbf{Prompt Engineering:} A carefully crafted prompt template to guide the LLM in generating precise Cypher queries.
+    \item \textbf{Query Execution:} The generated Cypher query is executed against the Knowledge Graph to retrieve relevant information.
+    \item \textbf{Response Synthesis:} The retrieved data is processed and formatted into a natural language response by the LLM.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{IMAGES/Schema.JPG}
+    \caption{KG schema visualized with APOC}
+    \label{fig:Matching Nodes}
+\end{figure}
+
+In the figure above, we present a schema of our graph, which describes the entities related to game companies, the series produced, the people involved in game development, and even the characters. This serves as a heterogeneous knowledge base containing different types of entities connected to one another. 
+
+For example, we can ask the LLM, \textit{"Which games has Kazuma Kaneko worked on?"} The chain responds with: \textit{"Kazuma Kaneko worked on Shin Megami Tensei III: Nocturne, Shin Megami Tensei V."} 
+
+
+In the figure below, we illustrate the steps taken by LangChain:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{IMAGES/immagine_2025-03-31_122504590.png}
+    \caption{LangChain steps}
+    \label{fig:Matching Nodes}
+\end{figure}
+
+Another angle worth exploring is the one about processing unstructured data into a Knowledge Graph. This way we can get the advantages of structured data such as finding complex relationships and patterns between entities, by starting from just a corpus of unstructured data. To construct this Knowledge Graph, LangChain leverages the use of an LLM that parses the text and categorizes the entities and their relationships. In the images below we can see the text corpus and the resulting schema of our generated Knowledge Graph.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{IMAGES/immagine_2025-03-31_164059272.png}
+    \caption{Text corpus}
+    \label{fig:Matching Nodes}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-03-31_163821435.png}
+    \caption{Generated Knowledge Graph}
+    \label{fig:Matching Nodes}
+\end{figure}
+
+
+As demonstrated, LangChain effectively generates precise Cypher queries and retrieves relevant context from the Knowledge Graph to construct accurate responses. It is capable also of constructing Knowledge Graphs from unstructured data such as documents or corpus of text. However, while this approach is beneficial, it has limitations in handling more complex queries, and the still experimental nature of graph building dedicated LLMs, make it less suitable for production environments. A more adaptable solution for implementing Graph RAG is to utilize LangGraph, which enables greater control over workflow execution and allows for the incorporation of additional steps to improve response accuracy and handling of intricate queries.
+
 
 \section{Experimental SQL generation with Knowledge Graphs}
 In this final section, we present an experiment that integrates the theoretical principles discussed throughout this thesis. The experiment explores the use of Knowledge Graphs in generating SQL queries from natural language prompts. The workflow is built around LangGraph, which systematically processes natural language input to generate SQL queries. The process begins by constructing a Knowledge Graph from the schema of two CSV tables retrieved from the OpenData platform, which we will discuss shortly. This schema is represented as a Knowledge Graph in Neo4j, providing a structured understanding of the data relationships. LangGraph leverages a Large Language Model (LLM) to generate a Cypher traversal query, establishing connections between the two tables. The generated query then undergoes validation, ensuring it meets syntax requirements and other adequacy criteria before final execution.
@@ -223,7 +275,7 @@ In the \textbf{Neo4j} graph, the possible relationships include:
 By leveraging this \textbf{Knowledge Graph}, we enable traversals between columns that effectively represent \textbf{joins} between relational database tables.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.4\textwidth]{IMAGES/KGschema.JPG}
+\includegraphics[width=0.7\textwidth]{IMAGES/KGschema.JPG}
     \caption{Example of generated Knowledge Graph}
     \label{fig:Knowledge Graph}
 \end{figure}
@@ -233,7 +285,7 @@ By leveraging this \textbf{Knowledge Graph}, we enable traversals between column
 After constructing the Knowledge Graph, we also vectorize the column labels and store them in a Vector Database. For this, we use \textbf{Weaviate}, chosen for its lightweight processing, flexibility in vectorization, and ease of integration across platforms—thanks to its official \textbf{Docker} container. Weaviate supports multiple vectorization methods, and for this use case, we employ an \textbf{Ollama} container running the \textbf{snowflake-arctic-embed2} model, which provides fast and efficient lightweight vectorization.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.5\textwidth]{IMAGES/immagine_2025-03-27_153710010.png}
+\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-03-27_153710010.png}
     \caption{Column label vectorization}
     \label{fig:Vectorization}
 \end{figure}
@@ -260,7 +312,7 @@ The scoring process is based on a \textbf{TF-IDF vectorizer} provided by the \te
 If the similarity score exceeds the threshold, the Knowledge Graph is updated accordingly. The matched columns are linked via an edge labeled \textbf{"SAME ATTRIBUTE"}, which stores the computed similarity score as an edge property.
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-03-27_154727649.png}
+\includegraphics[width=0.7\textwidth]{IMAGES/immagine_2025-03-27_154727649.png}
     \caption{Example of matching nodes in the Knowledge Graph}
     \label{fig:Matching Nodes}
 \end{figure}
@@ -279,7 +331,7 @@ After schema filtering, the natural language question is enriched by incorporati
 For Cypher query generation, we leverage LangGraph's support for sub-graphs, enabling the construction of larger and more complex graphs in a modular manner. 
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.4\textwidth]{IMAGES/LangGraph 2.JPG}
+\includegraphics[width=0.55\textwidth]{IMAGES/LangGraph 2.JPG}
     \caption{Cypher Generation}
     \label{fig:Matching Nodes}
 \end{figure}
@@ -378,7 +430,7 @@ The Cypher Traversal goes as follows:
 
 \begin{figure}[h]
     \centering
-\includegraphics[width=0.6\textwidth]{IMAGES/immagine_2025-03-28_082503566.png}
+\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-03-28_082503566.png}
     \caption{Generated Traversal}
     \label{fig:Traversal}
 \end{figure}
@@ -422,13 +474,37 @@ WHERE LOWER(t1.CountryoforiginPaysdorigine) = LOWER('Canada')
 
 These examples illustrate how our methodology effectively refines user queries and generates precise SQL queries by leveraging Knowledge Graph-based enrichment.
 
+\section{Join Discovery with a Knowledge Graph of \( N \) Tables}
 
-\subsection{Potential Improvements}
+Building upon the previously introduced job pipeline, we extend the process from joining two tables to handling a more complex use case involving \( N \) tables. The goal is to determine the necessary relational tables required for a given query. 
+\subsection{Metadata Integration in the KG construction}
+In this augmentation we keep the Knowledge Graph construction process mostly unchanged, aside from an additional step before the construction, which is fetching a sample of each CSV and instruct the LLM or a human operator to provide a brief description of what the relational table represents.This process is simple and straightforward making the difference between the performances of a human operator and a LLM minimal.
+\begin{figure}[h]
+    \centering
+\includegraphics[width=0.65\textwidth]{IMAGES/immagine_2025-04-05_084400623.png}
+    \caption{Example of an LLM's description of a Medical CSV}
+    \label{fig:LLM CSV analysis}
+\end{figure}
+
+
+While the graph construction process remains almost unchanged, the primary modification occurs in the querying phase.
+\subsection{Clustering in Knowledge Graph Representation}
+As the Knowledge Graph representation grows in complexity, clustering becomes essential. This preliminary phase organizes the graph into clusters of \( N \) nodes, where each node represents a relational table. Nodes are connected if they share one or more common elements. 
+\begin{figure}[h]
+    \centering
+\includegraphics[width=0.65\textwidth]{IMAGES/Virtual Graph.JPG}
+    \caption{Virtual Graph}
+    \label{fig:Virtual Graph}
+\end{figure}
+By providing the LLM with the schema of the clustered Knowledge Graph, we can efficiently identify the most relevant nodes for a given query. This approach significantly reduces the graph’s size while maintaining performance comparable to the previous case involving only two tables. This approach allows for the system to scale very well as it greatly reduces the surface of the Knowledge Graph to explore, and can be stored in a persistence layer for later use, and gets reprocessed when a new CSV is fetched in our database still keeping a linear growth of complexity.
+
+\section{Potential Improvements}
 
 While the experiment establishes a standardized pipeline for generating structured SQL queries, several improvements can enhance its efficiency and adaptability:  
 
 \begin{itemize}
     \item \textbf{Parallelization of LLM Prompting}: Implementing parallel processing can significantly speed up query generation by handling multiple prompts simultaneously.  
+    \item \textbf{Federated Graph}: Using federated graph may allow to parallelize our system and scale it horizontally, with replication and also by keeping unrelated tables separated, removing unnecessary complexity from the workflow.
     \item \textbf{Automatic Language Detection}: Since the data sources primarily use English, querying non-English sources introduces additional complexity for the LLM in understanding both the prompt and schema. To address this, an automated language detection mechanism should be implemented. This process would:
     \begin{enumerate}
         \item Identify the language of the Open Data source.
@@ -437,7 +513,11 @@ While the experiment establishes a standardized pipeline for generating structur
         \item Translate the final result back into the original language for consistency.
     \end{enumerate}
     \item  \textbf{Index vector store}: As the vector store increases in size the employment of specialized scalable indexes like HNSW may become more suitable, and it's worth to consider to use ACORN filtering strategy due to the correlation of the object and the querying predicate, also vector quantization may be useful in future uses.
-    \item  \textbf{Automatically generated labels}: One challenge that must be tackled is the presence of automatically generated labels, which reduce significantly the sense making capabilities of the Knowledge Graph, for future applications this challenge is one of the main difficulties that must be dealt with. One possible approach is to employ an Hybrid matching between label and value based matching.
+    \item  \textbf{Automatically generated labels}: One challenge that must be tackled is the presence of automatically generated labels, which reduce significantly the sense making capabilities of the Knowledge Graph, for future applications this challenge is one of the main difficulties that must be dealt with. One possible approach is to employ an Hybrid matching between label and value based matching, between columns of matching data to improve robustness of the matching. Another possible approach is to employ a human operator to assess matching when the uncertainty is high during the matching task.
+    \item \textbf{Security and query sanitation}: Security when it comes from fetching data from outside sources is always a concern to consider head on, API key must be stored in secure locations and not be put into the code or even an environment variable, if we're using containers the use of secrets is warranted. We make sure that the generated queries are sanitized and not executing an injection or other unauthorized operations. We analyze the data in order to assess that it's not tampered with, we validate and clean incoming data.
+    \item \textbf{Keyword Extraction with CKAN Integration}: The system begins by extracting high-level keywords from the user’s natural language query. These keywords are used to query the CKAN open data portal via its API, leveraging available metadata for real-time dataset retrieval without prior ingestion or full indexing. If the initial keyword set is insufficient, the system iteratively refines the keywords to better match the query’s intent. Retrieved tables and metadata are stored in a structured dictionary for use in downstream processing.
+
+
 \end{itemize}
 
 These enhancements would improve both the performance and versatility of the system when handling diverse datasets.

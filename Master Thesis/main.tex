@@ -67,8 +67,8 @@ No.
 \pagestyle{toclof}
 \tableofcontents  % INSERT TABLE OF CONTENTS
 \clearpage
-%\listoffigures % INSERT LIST OF FIGURES
-%\clearpage
+\listoffigures % INSERT LIST OF FIGURES
+\clearpage
 %\listoftables % INSERT LIST OF TABLES
 %\clearpage
 \end{spacing}
@@ -102,6 +102,7 @@ No.
 
 % APPENDIX
 %\input{BODY/APPENDIX A/appendix-A}
+\clearpage
 
 \begin{thebibliography}{99}
 \section*{References for Chapter 1}
@@ -259,6 +260,7 @@ A. Jayaram Subramanya, P. Pande, A. Shrivastava. "Vamana: Scalable Nearest Neigh
 \bibitem{weaviate_rag}
 Weaviate. "Generative RAG Starter Guide." 
 Available at: \url{https://weaviate.io/developers/weaviate/starter-guides/generative}.
+\clearpage
 \section*{References for Chapter 5}
 \bibitem{arxiv_rag}
 "Latest Research on RAG." 
@@ -281,11 +283,8 @@ Neo4j. "Knowledge Graph vs Vector RAG."
 Available at: \url{https://neo4j.com/blog/developer/knowledge-graph-vs-vector-rag/}.
 \end{thebibliography}
 
-
-
-
-
 % ACKNOWLEDGMENT
+\addcontentsline{toc}{chapter}{Acknowledgments}
 \input{acknowledgment.tex}
 
 
